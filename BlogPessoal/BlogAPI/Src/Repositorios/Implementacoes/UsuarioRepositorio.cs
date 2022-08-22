@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using BlogAPI.Src.Contextos;
 using BlogAPI.Src.Modelos;
 //using BlogPessoal.src.contextos;
 //using BlogPessoal.src.modelos;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+
 namespace BlogAPI.Src.Repositorios.Implementacoes
 {
     /// <summary>
@@ -36,11 +41,13 @@ namespace BlogAPI.Src.Repositorios.Implementacoes
             await _contexto.Usuarios.AddAsync(
             new Usuario
             {
-                Email = usuario.Email,
                 Nome = usuario.Nome,
+                Email = usuario.Email,
                 Senha = usuario.Senha,
-                Foto = usuario.Foto
-            });
+                Foto = usuario.Foto,
+                Tipo = usuario.Tipo
+            }
+            );
             await _contexto.SaveChangesAsync();
         }
 

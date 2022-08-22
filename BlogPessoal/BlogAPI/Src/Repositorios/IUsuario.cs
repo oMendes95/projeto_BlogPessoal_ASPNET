@@ -7,5 +7,6 @@ namespace BlogAPI.Src.Repositorios
     {
         Task<Usuario> PegarUsuarioPeloEmailAsync(string email);
         Task NovoUsuarioAsync(Usuario usuario);
+
     }
 }
